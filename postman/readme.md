@@ -19,6 +19,15 @@ curl --location 'http://localhost:8080/equipos/3' \
 
 ---
 
+## Get team info by name
+```
+curl --location 'http://localhost:8080/equipos/buscar?nombre=Barcelona' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: <cookie>'
+```
+
+---
+
 ## Update info team
 ```
 curl --location --request PUT 'http://localhost:8080/equipos/1' \
