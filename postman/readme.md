@@ -1,5 +1,5 @@
 # Postman cURLs for CRUD operations.
-**Note:** Change header "cookie" to your own cookie.
+**Note:** Change header __"cookie"__ to your own cookie.
 
 ## Get a list of all available teams
 ```
@@ -47,7 +47,7 @@ curl --location 'http://localhost:8080/equipos/' \
 
 ---
 
-## Delet team
+## Delete team
 ```
 curl --location --request DELETE 'http://localhost:8080/equipos/3' \
 --header 'Content-Type: application/json' \
