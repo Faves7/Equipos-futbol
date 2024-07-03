@@ -4,6 +4,7 @@ import com.entity.EquipoEntity;
 import com.repository.EquipoRepository;
 import com.dto.ErrorResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,7 +54,7 @@ public class EquipoController {
     public ResponseEntity<?> crearEquipo(@Valid @RequestBody EquipoEntity equipo) {
         try {
             EquipoEntity equipoGuardado = equipoRepository.save(equipo);
-            return ResponseEntity.status(201).body(equipoGuardado);
+            return new ResponseEntity<>(equipoGuardado, HttpStatus.CREATED);
         } catch (Exception e) {
             ErrorResponse errorResponse = new ErrorResponse("La solicitud es invalida");
             return ResponseEntity.status(400).body(errorResponse);
