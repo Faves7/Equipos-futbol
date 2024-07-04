@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
-import com.dto.ErrorResponse;
+import com.dto.ErrorResponseDTO;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -49,8 +49,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(DataAccessException.class)
     @Operation(summary = "Manejo de excepciones de acceso a datos", description = "Retorna un error de acceso a datos.")
-    public ResponseEntity<ErrorResponse> handleDataAccessException(DataAccessException ex, WebRequest request) {
-        ErrorResponse errorResponse = new ErrorResponse("Error de acceso a datos: " + ex.getMessage());
+    public ResponseEntity<ErrorResponseDTO> handleDataAccessException(DataAccessException ex, WebRequest request) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO("Error de acceso a datos: " + ex.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
@@ -64,8 +64,8 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     @Operation(summary = "Manejo de excepciones globales", description = "Retorna un error inesperado.")
-    public ResponseEntity<ErrorResponse> handleGlobalException(Exception ex, WebRequest request) {
-        ErrorResponse errorResponse = new ErrorResponse("Error inesperado: " + ex.getMessage());
+    public ResponseEntity<ErrorResponseDTO> handleGlobalException(Exception ex, WebRequest request) {
+        ErrorResponseDTO errorResponse = new ErrorResponseDTO("Error inesperado: " + ex.getMessage());
         return new ResponseEntity<>(errorResponse, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }

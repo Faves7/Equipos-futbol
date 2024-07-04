@@ -6,7 +6,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * Clase ErrorResponse: Representa una respuesta de error en la API.
  */
 @Schema(description = "Representa una respuesta de error en la API.")
-public class ErrorResponse {
+public class ErrorResponseDTO {
 
     /**
      * Mensaje de error en formato string.
@@ -20,7 +20,7 @@ public class ErrorResponse {
      *
      * @param message es el mensaje de error.
      */
-    public ErrorResponse(String message) {
+    public ErrorResponseDTO(String message) {
         this.message = message;
     }
 

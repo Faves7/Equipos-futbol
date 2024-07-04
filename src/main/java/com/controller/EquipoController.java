@@ -2,7 +2,7 @@ package com.controller;
 
 import com.entity.EquipoEntity;
 import com.repository.EquipoRepository;
-import com.dto.ErrorResponse;
+import com.dto.ErrorResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
 @RequestMapping("/equipos")
-@Tag(name = "Equipos de futbol", description = "Operaciones relacionadas con los equipos de futbol, Get, Update, Put y Delete.")
+@Tag(name = "Equipos de futbol", description = "Operaciones relacionadas con los equipos de futbol: Get, Update, Put, Post y Delete.")
 public class EquipoController {
 
     @Autowired
@@ -37,7 +37,7 @@ public class EquipoController {
         if (equipo.isPresent()) {
             return ResponseEntity.ok(equipo.get());
         } else {
-            ErrorResponse errorResponse = new ErrorResponse("Equipo no encontrado");
+            ErrorResponseDTO errorResponse = new ErrorResponseDTO("Equipo no encontrado");
             return ResponseEntity.status(404).body(errorResponse);
         }
     }
@@ -56,7 +56,7 @@ public class EquipoController {
             EquipoEntity equipoGuardado = equipoRepository.save(equipo);
             return new ResponseEntity<>(equipoGuardado, HttpStatus.CREATED);
         } catch (Exception e) {
-            ErrorResponse errorResponse = new ErrorResponse("La solicitud es invalida");
+            ErrorResponseDTO errorResponse = new ErrorResponseDTO("La solicitud es invalida");
             return ResponseEntity.status(400).body(errorResponse);
         }
     }
@@ -74,7 +74,7 @@ public class EquipoController {
             EquipoEntity equipoActualizado = equipoRepository.save(equipoExistente);
             return ResponseEntity.ok(equipoActualizado);
         } else {
-            ErrorResponse errorResponse = new ErrorResponse("Equipo no encontrado");
+            ErrorResponseDTO errorResponse = new ErrorResponseDTO("Equipo no encontrado");
             return ResponseEntity.status(404).body(errorResponse);
         }
     }
@@ -88,7 +88,7 @@ public class EquipoController {
             equipoRepository.deleteById(id);
             return ResponseEntity.noContent().build();
         } else {
-            ErrorResponse errorResponse = new ErrorResponse("Equipo no encontrado");
+            ErrorResponseDTO errorResponse = new ErrorResponseDTO("Equipo no encontrado");
             return ResponseEntity.status(404).body(errorResponse);
         }
     }

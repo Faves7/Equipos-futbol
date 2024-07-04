@@ -12,7 +12,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 /**
  * Clase EquipoEntity: Representa la entidad de un equipo de fútbol
  * en la base de datos, obteniendo los datos de la tabla 'equipos'.
- * En donde dicha tabla tiene los campos ID, nombre, liga y pais.
+ * En donde dicha tabla tiene los campos 'nombre', 'liga' y 'pais'.
  */
 @Entity
 @Table(name = "equipos")
